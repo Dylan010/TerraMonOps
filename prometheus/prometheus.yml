@@ -1,0 +1,14 @@
+global:
+  scrape_interval: 15s
+
+scrape_configs:
+  - job_name: 'ec2_instances'
+    ec2_sd_configs:
+      - region: us-east-1  # Cambia esto a tu región de AWS
+        port: 8000  # Puerto donde tu script Python expone las métricas
+    relabel_configs:
+      - source_labels: [__meta_ec2_public_ip]
+        target_label: instance
+      - source_labels: [__meta_ec2_tag_Name]
+        target_label: name
+

@@ -1,0 +1,9 @@
+all:
+  children:
+    monitoring_instances:
+      hosts:
+        instance_1:
+          ansible_host: <IP-ec2-1>
+      vars:
+        ansible_user: ubuntu
+        ansible_ssh_private_key_file: ../terraform/monitoring-key.pem
